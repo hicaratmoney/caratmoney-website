@@ -16,7 +16,6 @@ const CaratMoney = () => {
   const sellGoldRef = useRef(null);
 
   const RATE_24K = 13500;
-
   const purities = { 24: 0.999, 22: 0.916, 18: 0.750, 14: 0.585 };
 
   const formatIndianNumber = (num) => {
@@ -116,75 +115,6 @@ const CaratMoney = () => {
       whyUsNav: 'Why Us',
       sellGold: 'Sell Gold'
     },
-    bn: {
-      header: 'প্রতিটি ক্যারেট গুরুত্বপূর্ণ — সেরা হার। সত্যিই দ্রুত।',
-      goldPurchased: 'সোনা ক্রয়',
-      happyCustomers: 'সন্তুষ্ট গ্রাহক',
-      avgRating: 'গড় রেটিং',
-      weight: 'ওজন (গ্রামে)',
-      goldPurity: 'সোনার বিশুদ্ধতা (ক্যারেট)',
-      mobileNumber: 'মোবাইল নম্বর',
-      carat24: '24 ক্যারেট — 99.9% খাঁটি',
-      carat22: '22 ক্যারেট — 91.6% খাঁটি',
-      carat18: '18 ক্যারেট — 75% খাঁটি',
-      carat14: '14 ক্যারেট — 58.5% খাঁটি',
-      youReceive: 'আপনি পাবেন',
-      today: 'আজকের ক্যারেট মানি রেট',
-      calcTitle: 'সোনার মূল্য আনুমানিক',
-      calcSubtitle: 'এখনই আপনার সোনার মূল্য জানুন।',
-      serviceFeeDeduction: 'সেবা ফি ছাড় (3%)',
-      getExactQuote: 'সঠিক উদ্ধৃতি পান →',
-      enterMobile: '10 অঙ্কের মোবাইল নম্বর দিন',
-      getQuoteForYourGold: 'আপনার সোনার জন্য উদ্ধৃতি পান',
-      howItWorks: 'এটি কীভাবে কাজ করে',
-      callNowConsultation: '☎ এখনই কল করুন — বিনামূল্যে পরামর্শ',
-      calculateValueFirst: 'প্রথমে মূল্য গণনা করুন',
-      bookAppointmentWhatsApp: '💬 হোয়াটসঅ্যাপে অ্যাপয়েন্টমেন্ট বুক করুন',
-      pricingHeading: 'আমরা আপনার সোনার মূল্য কীভাবে নির্ধারণ করি',
-      pricingSubtext: 'আমরা প্রতিদিন আপডেট করা লাইভ MCX/IBJA সোনার হার ব্যবহার করি। আমাদের স্প্রেড শিল্পের সবচেয়ে কঠোর — আপনি সর্বদা সর্বাধিক মূল্য পান।',
-      noDedications: 'তৈরি করার চার্জের জন্য কোনও কাটা নেই। লুকানো কোনো ফি নেই। আপনি যা দেখেন তাই পান — সরাসরি আপনার ব্যাংক অ্যাকাউন্টে স্থানান্তরিত।',
-      hallmark: 'হলমার্ক',
-      karat: 'ক্যারেট',
-      purityPercent: 'বিশুদ্ধতা %',
-      ratePerGram: 'হার (প্রতি গ্রাম)',
-      bis999: 'BIS 999',
-      bis916: 'BIS 916',
-      bis750: 'BIS 750',
-      bis585: 'BIS 585',
-      processTitle: 'সহজ। দ্রুত। স্বচ্ছ।',
-      processSubtitle: 'সোনা অ্যাকাউন্টে মিনিটের মধ্যে।',
-      callText: 'কল করুন',
-      callDesc: 'আমাদের কল করুন বা হোয়াটসঅ্যাপ করুন। আমরা আপনার একটি অ্যাপয়েন্টমেন্ট বুক করব',
-      weighAndTest: 'ওজন এবং পরীক্ষা',
-      weighDesc: 'সার্টিফাইড BIS ওজন নির্ধারণ। আপনার সামনে XRF বিশুদ্ধতা পরীক্ষা 100% স্বচ্ছ প্রক্রিয়া।',
-      getYourQuote: 'আপনার উদ্ধৃতি পান',
-      quoteDesc: 'লাইভ বাজার হারের উপর ভিত্তি করে তাৎক্ষণিক মূল্য উদ্ধৃতি। সেরা হার গ্যারান্টিযুক্ত — কোন আলোচনার প্রয়োজন নেই।',
-      instantMoney: 'তাৎক্ষণিক অর্থ',
-      instantDesc: 'মিনিটের মধ্যে তাৎক্ষণিক ব্যাংক স্থানান্তর।',
-      whyUs: 'কেন ক্যারেট মানি',
-      bisCertified: 'BIS সার্টিফাইড পরীক্ষা',
-      bisCertifiedDesc: 'ভারতীয় মান ব্যুরো দ্বারা প্রত্যয়িত XRF প্রযুক্তি ব্যবহার করে প্রতিটি গ্রাম পরীক্ষা করা হয়। কোনো অনুমান নেই — শুধুমাত্র সঠিক, সার্টিফাইড বিশুদ্ধতা পরিমাপ।',
-      liveMcx: 'লাইভ MCX হার মূল্য নির্ধারণ',
-      liveMcxDesc: 'আপনার সোনার মূল্য লাইভ MCX এবং IBJA হারের বিপরীতে প্রতিদিন আপডেট করা হয়। আপনি সর্বদা বাজার হার পান, একটি ছাড়ের মূল্য সংখ্যা নয়।',
-      instantBankTransfer: 'তাৎক্ষণিক ব্যাংক স্থানান্তর',
-      instantBankDesc: 'ডিল বন্ধ হওয়ার 5 মিনিটের মধ্যে আপনার ব্যাংক অ্যাকাউন্টে IMPS/RTGS স্থানান্তর।',
-      fullTransparency: 'সম্পূর্ণ স্বচ্ছতা',
-      fullTransparencyDesc: 'প্রতিটি পদক্ষেপ — ওজন, বিশুদ্ধতা পরীক্ষা, হার গণনা — আপনার সামনে ঘটে। আমরা প্রতিটি লেনদেনের জন্য আপনাকে একটি বিস্তারিত রসিদ হাতে দিই।',
-      safeSecurity: 'নিরাপদ এবং সুরক্ষিত',
-      safeSecurityDesc: 'CCTV-পর্যবেক্ষণ প্রাঙ্গণ, বীমাযুক্ত ভল্ট এবং প্রশিক্ষিত কর্মীরা। আপনার সোনা আপনি প্রবেশের মুহূর্ত থেকেই সবচেয়ে নিরাপদ হাতে।',
-      noPressure: 'কোনো চাপ। কখনো না।',
-      noPressureDesc: 'উদ্ধৃতি পছন্দ করবেন না? চলে যান। কোনো প্রশ্ন জিজ্ঞাসা করা হয় না। আপনার বিশ্বাস একটি লেনদেনের চেয়ে বেশি গুরুত্বপূর্ণ।',
-      reviews: 'পর্যালোচনা',
-      overallRating: 'সামগ্রিক রেটিং',
-      transactionsDone: 'লেনদেন সম্পন্ন',
-      avgProcessTime: 'গড় প্রক্রিয়া সময়',
-      sellGoldHeading: 'প্রতিটি ক্যারেট গুরুত্বপূর্ণ — সেরা হার। সত্যিই দ্রুত।',
-      readyToSell: 'আপনার সোনা বিক্রি করতে প্রস্তুত?',
-      estimate: 'অনুমান',
-      process: 'প্রক্রিয়া',
-      whyUsNav: 'কেন আমরা',
-      sellGold: 'সোনা বিক্রি করুন'
-    },
     hi: {
       header: 'हर कैरेट मायने रखता है — सर्वश्रेष्ठ दरें। सच में तेज़।',
       goldPurchased: 'सोना खरीदा गया',
@@ -253,6 +183,75 @@ const CaratMoney = () => {
       process: 'प्रक्रिया',
       whyUsNav: 'हमारे बारे में',
       sellGold: 'सोना बिक्रय करें'
+    },
+    bn: {
+      header: 'প্রতিটি ক্যারেট গুরুত্বপূর্ণ — সেরা হার। সত্যিই দ্রুত।',
+      goldPurchased: 'সোনা ক্রয়',
+      happyCustomers: 'সন্তুষ্ট গ্রাহক',
+      avgRating: 'গড় রেটিং',
+      weight: 'ওজন (গ্রামে)',
+      goldPurity: 'সোনার বিশুদ্ধতা (ক্যারেট)',
+      mobileNumber: 'মোবাইল নম্বর',
+      carat24: '24 ক্যারেট — 99.9% খাঁটি',
+      carat22: '22 ক্যারেট — 91.6% খাঁটি',
+      carat18: '18 ক্যারেট — 75% খাঁটি',
+      carat14: '14 ক্যারেট — 58.5% খাঁটি',
+      youReceive: 'আপনি পাবেন',
+      today: 'আজকের ক্যারেট মানি রেট',
+      calcTitle: 'সোনার মূল্য আনুমানিক',
+      calcSubtitle: 'এখনই আপনার সোনার মূল্য জানুন।',
+      serviceFeeDeduction: 'সেবা ফি ছাড় (3%)',
+      getExactQuote: 'সঠিক উদ্ধৃতি পান →',
+      enterMobile: '10 অঙ্কের মোবাইল নম্বর দিন',
+      getQuoteForYourGold: 'আপনার সোনার জন্য উদ্ধৃতি পান',
+      howItWorks: 'এটি কীভাবে কাজ করে',
+      callNowConsultation: '☎ এখনই কল করুন — বিনামূল্যে পরামর্শ',
+      calculateValueFirst: 'প্রথমে মূল্য গণনা করুন',
+      bookAppointmentWhatsApp: '💬 হোয়াটসঅ্যাপে অ্যাপয়েন্টমেন্ট বুক করুন',
+      pricingHeading: 'আমরা আপনার সোনার মূল্য কীভাবে নির্ধারণ করি',
+      pricingSubtext: 'আমরা প্রতিদিন আপডেট করা লাইভ MCX/IBJA সোনার হার ব্যবহার করি। আমাদের স্প্রেড শিল্পের সবচেয়ে কঠোর — আপনি সর্বদা সর্বাধিক মূল্য পান।',
+      noDedications: 'তৈরি করার চার্জের জন্য কোনও কাটা নেই। লুকানো কোনো ফি নেই। আপনি যা দেখেন তাই পান — সরাসরি আপনার ব্যাংক অ্যাকাউন্টে স্থানান্তরিত।',
+      hallmark: 'হলমার্ক',
+      karat: 'ক্যারেট',
+      purityPercent: 'বিশুদ্ধতা %',
+      ratePerGram: 'হার (প্রতি গ্রাম)',
+      bis999: 'BIS 999',
+      bis916: 'BIS 916',
+      bis750: 'BIS 750',
+      bis585: 'BIS 585',
+      processTitle: 'সহজ। দ্রুত। স্বচ্ছ।',
+      processSubtitle: 'সোনা অ্যাকাউন্টে মিনিটের মধ্যে।',
+      callText: 'কল করুন',
+      callDesc: 'আমাদের কল করুন বা হোয়াটসঅ্যাপ করুন। আমরা আপনার একটি অ্যাপয়েন্টমেন্ট বুক করব',
+      weighAndTest: 'ওজন এবং পরীক্ষা',
+      weighDesc: 'সার্টিফাইড BIS ওজন নির্ধারণ। আপনার সামনে XRF বিশুদ্ধতা পরীক্ষা 100% স্বচ্ছ প্রক্রিয়া।',
+      getYourQuote: 'আপনার উদ্ধৃতি পান',
+      quoteDesc: 'লাইভ বাজার হারের উপর ভিত্তি করে তাৎক্ষণিক মূল্য উদ্ধৃতি। সেরা হার গ্যারান্টিযুক্ত — কোন আলোচনার প্রয়োজন নেই।',
+      instantMoney: 'তাৎক্ষণিক অর্থ',
+      instantDesc: 'মিনিটের মধ্যে তাৎক্ষণিক ব্যাংক স্থানান্তর।',
+      whyUs: 'কেন ক্যারেট মানি',
+      bisCertified: 'BIS সার্টিফাইড পরীক্ষা',
+      bisCertifiedDesc: 'ভারতীয় মান ব্যুরো দ্বারা প্রত্যয়িত XRF প্রযুক্তি ব্যবহার করে প্রতিটি গ্রাম পরীক্ষা করা হয়। কোনো অনুমান নেই — শুধুমাত্র সঠিক, সার্টিফাইড বিশুদ্ধতা পরিমাপ।',
+      liveMcx: 'লাইভ MCX হার মূল্য নির্ধারণ',
+      liveMcxDesc: 'আপনার সোনার মূল্য লাইভ MCX এবং IBJA হারের বিপরীতে প্রতিদিন আপডেট করা হয়। আপনি সর্বদা বাজার হার পান, একটি ছাড়ের মূল্য সংখ্যা নয়।',
+      instantBankTransfer: 'তাৎক্ষণিক ব্যাংক স্থানান্তর',
+      instantBankDesc: 'ডিল বন্ধ হওয়ার 5 মিনিটের মধ্যে আপনার ব্যাংক অ্যাকাউন্টে IMPS/RTGS স্থানান্তর।',
+      fullTransparency: 'সম্পূর্ণ স্বচ্ছতা',
+      fullTransparencyDesc: 'প্রতিটি পদক্ষেপ — ওজন, বিশুদ্ধতা পরীক্ষা, হার গণনা — আপনার সামনে ঘটে। আমরা প্রতিটি লেনদেনের জন্য আপনাকে একটি বিস্তারিত রসিদ হাতে দিই।',
+      safeSecurity: 'নিরাপদ এবং সুরক্ষিত',
+      safeSecurityDesc: 'CCTV-পর্যবেক্ষণ প্রাঙ্গণ, বীমাযুক্ত ভল্ট এবং প্রশিক্ষিত কর্মীরা। আপনার সোনা আপনি প্রবেশের মুহূর্ত থেকেই সবচেয়ে নিরাপদ হাতে।',
+      noPressure: 'কোনো চাপ। কখনো না।',
+      noPressureDesc: 'উদ্ধৃতি পছন্দ করবেন না? চলে যান। কোনো প্রশ্ন জিজ্ঞাসা করা হয় না। আপনার বিশ্বাস একটি লেনদেনের চেয়ে বেশি গুরুত্বপূর্ণ।',
+      reviews: 'পর্যালোচনা',
+      overallRating: 'সামগ্রিক রেটিং',
+      transactionsDone: 'লেনদেন সম্পন্ন',
+      avgProcessTime: 'গড় প্রক্রিয়া সময়',
+      sellGoldHeading: 'প্রতিটি ক্যারেট গুরুত্বপূর্ণ — সেরা হার। সত্যিই দ্রুত।',
+      readyToSell: 'আপনার সোনা বিক্রি করতে প্রস্তুত?',
+      estimate: 'অনুমান',
+      process: 'প্রক্রিয়া',
+      whyUsNav: 'কেন আমরা',
+      sellGold: 'সোনা বিক্রি করুন'
     },
     kn: {
       header: 'ಪ್ರತಿಯೊಂದು ಕ್ಯಾರೆಟ್ ಮಾಹಿತ್ಯವಹ — ಸಿರಿ ದರಗಳು. ನಿಜವಾಗಿಯೂ ವೇಗ.',
@@ -462,10 +461,10 @@ const CaratMoney = () => {
       sellGold: 'सोना विक्रय'
     },
     ta: {
-      header: 'ஒவ்வொரு கேரட்ও பாடிய — சிறந்த விலைகள். உண்மைவாக வேகம்.',
-      goldPurchased: 'தங்கம் ក្រយ',
+      header: 'ஒவ்வொரு கேரட்ও மாணிய — சிறந்த விலைகள். உண்மைவாக வேகம்.',
+      goldPurchased: 'தங்கம் క్রయ',
       happyCustomers: 'மகிழ்ந்த வாடிக்கையாளர்கள்',
-      avgRating: 'சராசரி ரேट்டிங்',
+      avgRating: 'சராசரி ரேட்டிங்',
       weight: 'எடை (கிராமில்)',
       goldPurity: 'தங்கத்தின் தூய்மை (கேரட்)',
       mobileNumber: 'மொபைல் எண்',
@@ -475,60 +474,52 @@ const CaratMoney = () => {
       carat14: '14 கேரட் — 58.5% தூய',
       youReceive: 'நீங்கள் பெறுவீர்கள்',
       today: 'இன்றைய கேரட் மணி விலை',
-      calcTitle: 'தங்கத்தின் மூல்य ക్ણకୟલ້ेടর',
+      calcTitle: 'தங்கத்தின் மூல்य கணக்கீட்டி',
       calcSubtitle: 'இப்போதே உங்கள் தங்கத்தின் மூல்யத்தை சரிபார்க்கவும்.',
-      serviceFeeDeduction: 'சேवा கட्टணम் குறைப्पु (3%)',
-      getExactQuote: 'சरियான मेष्कोल् पेरुभुम् →',
-      enterMobile: '10 इलक्क मॊबाइल् एणु उल्लिडवुम्',
-      getQuoteForYourGold: 'உங்கள் தங்கத்திற்கு மேற्கோள் பெறுங்கள்',
+      serviceFeeDeduction: 'சேவா கட்டணம் குறைப்பு (3%)',
+      getExactQuote: 'சரியான மேற்கோள் பெறவும் →',
+      enterMobile: '10 இலக்க மொபைல் எண்ணை உள்ளிடவும்',
+      getQuoteForYourGold: 'உங்கள் தங்கத்திற்கு மேற்கோள் பெறுங்கள்',
       howItWorks: 'இது எப்படி வேலை செய்கிறது',
       callNowConsultation: '☎ இப்போது அழைக்கவும் — இலவச ஆலோசனை',
-      calculateValueFirst: 'முதலில் மூல्य கணக्கிடுங்கள்',
+      calculateValueFirst: 'முதலில் மூல்य கணக்கிடுங்கள்',
       bookAppointmentWhatsApp: '💬 WhatsApp இல் நியமனம் பதிவு செய்யவும்',
-      pricingHeading: 'நாம் உங்கள் தங்கத்தின் விலை நிर्ধারிக்கும் विধम्',
-      pricingSubtext: 'नाम् दिनसरि पुथुप्पिक्कप्पडुम् नेरिडु MCX/IBJA तङ्कम् विलैकळुकळ पयनपादुक्कुम्। नमर पेरिस् तोझ्यिलगतिल् इरुक्कमनम् — नीञ्कळ एप्पोझुम् अधिक मूल्य पेरुभीर्कळ।',
-      noDedications: 'मेर्प् अरक्कम् गलिल कोनुम् मुरिक्कळ इल्ल। कोनो लुकावन् पी इल्ल। निन्नुळ कानुन्नत् निन्नुळ स्वीकरिक्कुन्नत् — नेरिज़ निन्नुळ बान्क अक्कौन्टिलेक्क मरत्तुन्नु।',
-      hallmark: 'हॊलमार्क',
-      karat: 'केरेट',
-      purityPercent: 'शुद्धत %',
-      ratePerGram: 'दर (प्रती ग्रामु)',
+      pricingHeading: 'நாம் உங்கள் தங்கத்தின் விலை நிர்ధारிக்கும் விதம்',
+      pricingSubtext: 'நாம் தினசரி புதுப்பிக்கப்படும் நேரடி MCX/IBJA தங்க விலைகளைப் பயன்படுத்துகிறோம். நமारா பெரிஸ் தொழிலகத்தில் இறுக்கமான — நீங்கள் எப்போதும் அதிக மூல்য பெறுவீர்கள்.',
+      noDedications: 'மேக் அப் கட்டணங்களுக்கு కోनো কാट नেई. कोनो छिપа हुआ फी नेई. आप जो देखते हैं वही आप पाते हैं — सरासरी आपके बैंक खाते में स्थानांतरित।',
+      hallmark: 'હોલમાર્ક',
+      karat: 'کেરાட',
+      purityPercent: 'शुद्धता %',
+      ratePerGram: 'दर (प्रति ग्রॅम)',
       bis999: 'BIS 999',
       bis916: 'BIS 916',
       bis750: 'BIS 750',
       bis585: 'BIS 585',
-      processTitle: 'सहज। वेग। प्रशक्तत.',
-      processSubtitle: 'तङ्कम् अक्कौन्टिलेक्क निमिशङ्गलिल्।',
-      callText: 'अझैकवुम्',
-      callDesc: 'अमहेनु अझैकवुम् अथवा व्हट्सअप् चेयवुम्। अहम् निन्नुळ निमनम् बुक् चेय्युम्',
-      weighAndTest: 'वितरनम् अन्टु परीक्षन्',
-      weighDesc: 'सर्त्तिपाड् BIS वितरनम्। निन्नुळ मुन्निले XRF शुद्धत परीक्षन् 100% सुतार्य प्रक्रिय।',
-      getYourQuote: 'निन्नुळ उद्धरनम् नेडुक',
-      quoteDesc: 'लाइव् मार्केट् दरङ्कल् अडिस्तानमाय् तृप्तिदायकमाय विलयिल् उद्धरनम्। मिक्कच् निरक्क उरप्पु — यातॊरु कुडियालोचन अवश्यमिल्ल।',
-      instantMoney: 'तृप्तिदायकम् पणम्',
-      instantDesc: 'निमिशङ्गलिल् तृप्तिदायकम् बान्क् कैमारत्तम्।',
-      whyUs: 'केरेट् मणि एन्तुक्कोण्ड्',
-      bisCertified: 'BIS सर्त्तिपाड् परीक्षन्',
-      bisCertifiedDesc: 'इन्तियन् मान निरच्चार ब्यूरो सर्त्तिपिक्केशन् XRF सान्केतिकत उपयोगिच्च ओरोरु ग्रामुम् परीक्षन् चेय्युन्नु। केवलम् कृत्य सर्त्तिपिक्केशन् शुद्धत अलैपु।',
-      liveMcx: 'लाइव् MCX निरक्क् विल निश्चयम्',
-      liveMcxDesc: 'निन्नुळ स्वर्णत्तिन्नुळ विल लाइव् MCX ओ IBJA निरक्कुकळ् प्रतिदिनम् अप्पुडेट् चेय्युन्नु। निन्नुळ एप्पोझुम् मार्केट् निरक्क स्वीकरिक्कुन्नु छायां सन्ख्य इल्ल।',
-      instantBankTransfer: 'तृप्तिदायकम् बान्क् कैमारत्तम्',
-      instantBankDesc: 'डील अडैक्कल् 5 निमिशङ्गलेक्कुरिच्च निन्नुळ बान्क् अक्कौन्टिलेक्क IMPS/RTGS कैमारत्तम्।',
-      fullTransparency: 'सम्पूरण सुतार्यत',
-      fullTransparencyDesc: 'ओरोरु घट्टम् — वितरनम् शुद्धत परीक्षन निरक्क कण्कलक्कल् — निन्नुळ मुन्निल सम्भविक्कुन्नु। अहम् प्रतियोरु लेन्देन्निनु विशदमाय रसीद् निन्नुळक् कैमारितारुन्नु।',
-      safeSecurity: 'सुरक्षितम् ओ सुरक्षित',
-      safeSecurityDesc: 'CCTV-निरीक्षण परिसरम् बिम वाल्ट ओ परिशीलनम् कर्मचारी। निन्नुळ स्वर्णम् निन्नुळ प्रवेशिक्कुन्ना निमिशतिल सुरक्षित कैकलिल्।',
-      noPressure: 'सम्मर्दम् इल्ल। करत्तिलुम्।',
-      noPressureDesc: 'उद्धरनम् इष्टापेडुन्निल्ले? स्वतन्त्र। सवालाय कुडियालोचनयो इल्ल। निन्नुळ बिस्वासम् लेन्देनिनु कुडुतेल् प्राधानयमुल्लत्।',
-      reviews: 'पुनरवलोकनम्',
-      overallRating: 'मॊत्तत्तिल् रेट्टिङ्',
-      transactionsDone: 'लेन्देन सम्पन्नमाय्',
-      avgProcessTime: 'सरासरि प्रक्रिय समयम्',
-      sellGoldHeading: 'ઓરોરු केरेट् संख्य — सिरिस दरगुल्। निजवागि वेगम्।',
-      readyToSell: 'निन्नुळ स्वर्णम् विल्क्कान् तयारल्ले?',
-      estimate: 'अनुमानम्',
-      process: 'प्रक्रिय',
-      whyUsNav: 'अहम्',
-      sellGold: 'स्वर्णम् विन्'
+      processTitle: 'सহजो. વેગ. पारदर्शिता.',
+      processSubtitle: 'તmngkh खात्यात मिनिटों में।',
+      callText: 'अழैkavum्',
+      callDesc: 'અmhEne అझैkavum् અथवा व्हट्सअप् चेyవum्. અhm्ನីńnom अपોईntमेnt् బుk్ చేyവีm्',
+      weighAndTest: 'વજન અnd् परीక्षण',
+      weighDesc: 'सर्ट्टिपाड् BIS વજન. નईన్ుळ मुnnীle XRF শुদ్धता परीक్षણ 100% sucচಛत్র প्रक्रिයा.',
+      getYourQuote: 'నñीnjūļ ուద्धરণ నેТుk',
+      quoteDesc: 'लाйв्ъ మार్কेtт్ दरങ్కеляीన्్ अधारिต తત్క్षण ध్ р్ र ଉद्ধرण. сिರिս दरਾਂೀត् ग् यारંāटि — सआno नदर्शન आवाश్ърम్।',
+      instantMoney: 'తत్్క்षண పंmm',
+      instantDesc: 'నিదଶृଂમలिल్ तत్क్षण बैନk्ु బదిlīì।',
+      whyUs: 'кēরēЌ दнēy्',
+      bisCertified: 'BIS prmાણীकृत परीक्षण',
+      bisCertifiedDesc: 'भāरीēяन माннदंڈ bयूरēଅ દ్।్ु prmāણीکृत XRF્य ـ సാંkेतिक तेಚ್్்००yēgēచਾ दႠ්ఫkເລ. yEदుდ्่०ಚႸ ¤ कēవ్్ు prmાণીکृଠ شुद్ંத్తा अलैпु።',
+      liveMcx: 'लाйວ్ MCX نिरակ્् वилื निशायम్',
+      liveMcxDesc: 'निङ್गुள უस్वर్३नत్ िnरక్् लایเచເMCX อ IBJA นिरक್უకਲ్ प्रतिдิनम्ु অপ़ుडेଟທुn்нु. నిങ్్ుళ् апokుжുм mার్kेଟ್ नிರక్و सుวीకrिక్్ుنु ३్ుాy్ఫം सଂხुଯ ीľ్།',
+      reviews: 'చarീkன',
+      overallRating: 'სроత్్इ్른ଅုทńġ',
+      transactionsDone: 'लenedEn समkannଅौ్്్',
+      avgProcessTime: 'សrాసรि प्রক्रिay સમયાm्',
+      sellGoldHeading: 'ઓરოરು कēरēट् संख్य — सిरिસ दრरguļ. నīजmའ्र vēgm్।',
+      readyToSell: 'आपkा सોना్్ಲukାnु తeyารэ?',
+      estimate: 'అनुमાnm्',
+      process: 'प्रक्রिय',
+      whyUsNav: 'hम्мāरे बāरē में',
+      sellGold: 'सōna बेచು'
     },
     te: {
       header: 'ప్రతి కేరట్ సంఖ్య — సుఖుదుదుई రేటులు. నిజమైన వేగం.',
@@ -572,7 +563,7 @@ const CaratMoney = () => {
       weighAndTest: 'బరువు మరియు పరీక్ష',
       weighDesc: 'సర్టిఫైడ్ BIS బరువు. మీ ముందు XRF స్వచ్ఛత పరీక్ష 100% పారదర్శక ప్రక్రియ.',
       getYourQuote: 'మీ కోట్ పొందండి',
-      quoteDesc: 'లైవ్ మార్కెట్ రేట్ల ఆధారంగా తక్షణ ధర కోటేషన్. సుఖుదుదుই రేట్ గ్యారంటీ — ఎటువంటి చర్చ అవసరం లేదు.',
+      quoteDesc: 'లైవ్ మార్కెట్ రేట్ల ఆధారంగా తక్షణ ధర కోటేషన్. సుఖుదుదుई రేట్ గ్యారంటీ — ఎటువంటి చర్చ అవసరం లేదు.',
       instantMoney: 'తక్షణ డబ్బు',
       instantDesc: 'నిమిషాలలో తక్షణ బ్యాంకు బదిలీ.',
       whyUs: 'క్యారెట్ మనీ ఎందుకు',
@@ -635,15 +626,6 @@ const CaratMoney = () => {
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#000000', color: '#ffffff', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-      {/* Sticky Nav + Content continues... */}
-      {/* [REST OF CODE - Paste everything after this line into GitHub] */}
-    </div>
-  );
-};
-
-export default CaratMoney;
-
-{/* Sticky Navigation Bar */}
       <nav style={{ backgroundColor: '#000000', borderBottom: '1px solid #1f2937', position: 'sticky', top: 0, zIndex: 50 }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#fbbf24' }}>Carat Money</div>
@@ -675,7 +657,6 @@ export default CaratMoney;
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '8rem 1rem', textAlign: 'center' }}>
         <h1 style={{ fontSize: '3.5rem', fontWeight: 'bold', marginBottom: '1.5rem', lineHeight: 1.2 }}>
           {t.header.split(' — ')[0]} <br />
@@ -687,7 +668,6 @@ export default CaratMoney;
         </div>
       </section>
 
-      {/* Estimate Section */}
       <section ref={estimateRef} style={{ maxWidth: '1280px', margin: '0 auto', padding: '5rem 1rem', borderTop: '1px solid #1f2937' }}>
         <h2 style={{ fontSize: '2.25rem', fontWeight: 'bold', marginBottom: '1rem' }}>{t.calcTitle}</h2>
         <p style={{ color: '#9ca3af', marginBottom: '3rem' }}>{t.calcSubtitle}</p>
@@ -727,11 +707,10 @@ export default CaratMoney;
               <div style={{ fontSize: '0.875rem', color: '#9ca3af', marginBottom: '0.5rem' }}>{t.youReceive}</div>
               <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#22c55e' }}>~₹{formatIndianNumber(estimatedValue)}</div>
             </div>
-            <button onClick={() => { if (isFormValid) { alert(`Quote for ${weight}g of ${purity} Carat gold`); } }} disabled={!isFormValid} style={{ width: '100%', backgroundColor: isFormValid ? '#f59e0b' : '#6b7280', color: '#000000', fontWeight: 'bold', padding: '0.75rem', borderRadius: '0.375rem', border: 'none', marginTop: '1.5rem', cursor: isFormValid ? 'pointer' : 'not-allowed', fontSize: '1rem', opacity: isFormValid ? 1 : 0.6 }}>{t.getExactQuote}</button>
+            <button onClick={() => { if (isFormValid) { alert(`Quote for ${weight}g of ${purity} Carat gold. Mobile: ${mobileNumber}`); } }} disabled={!isFormValid} style={{ width: '100%', backgroundColor: isFormValid ? '#f59e0b' : '#6b7280', color: '#000000', fontWeight: 'bold', padding: '0.75rem', borderRadius: '0.375rem', border: 'none', marginTop: '1.5rem', cursor: isFormValid ? 'pointer' : 'not-allowed', fontSize: '1rem', opacity: isFormValid ? 1 : 0.6 }}>{t.getExactQuote}</button>
           </div>
         </div>
 
-        {/* Pricing Table */}
         <div style={{ backgroundColor: '#111827', borderRadius: '0.75rem', padding: '3rem', border: '1px solid #1f2937' }}>
           <h3 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }}>{t.pricingHeading}</h3>
           <p style={{ color: '#9ca3af', marginBottom: '1.5rem' }}>{t.pricingSubtext}</p>
@@ -775,9 +754,102 @@ export default CaratMoney;
         </div>
       </section>
 
-      {/* Process, Why Us, Reviews, Sell Gold sections... CONTINUE PASTING BELOW */}
+      <section ref={processRef} style={{ maxWidth: '1280px', margin: '0 auto', padding: '5rem 1rem', borderTop: '1px solid #1f2937' }}>
+        <h2 style={{ fontSize: '2.25rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>{t.processTitle}</h2>
+        <p style={{ color: '#9ca3af', marginBottom: '3rem' }}>{t.processSubtitle}</p>
 
-      {/* Footer + Floating WhatsApp */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
+          {[
+            { num: '01', title: t.callText, desc: t.callDesc },
+            { num: '02', title: t.weighAndTest, desc: t.weighDesc },
+            { num: '03', title: t.getYourQuote, desc: t.quoteDesc },
+            { num: '04', title: t.instantMoney, desc: t.instantDesc }
+          ].map((step, idx) => (
+            <div key={idx} style={{ backgroundColor: '#111827', borderRadius: '0.75rem', padding: '2rem', border: '1px solid #1f2937', textAlign: 'center' }}>
+              <div style={{ fontSize: '2.25rem', fontWeight: 'bold', color: '#fbbf24', marginBottom: '1rem' }}>{step.num}</div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>{step.title}</h3>
+              <p style={{ color: '#9ca3af', fontSize: '0.875rem' }}>{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section ref={whyUsRef} style={{ maxWidth: '1280px', margin: '0 auto', padding: '5rem 1rem', borderTop: '1px solid #1f2937' }}>
+        <h2 style={{ fontSize: '2.25rem', fontWeight: 'bold', marginBottom: '3rem' }}>{t.whyUs}</h2>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+          {[
+            { title: t.bisCertified, desc: t.bisCertifiedDesc, icon: '🏅' },
+            { title: t.liveMcx, desc: t.liveMcxDesc, icon: '📊' },
+            { title: t.instantBankTransfer, desc: t.instantBankDesc, icon: '⚡' },
+            { title: t.fullTransparency, desc: t.fullTransparencyDesc, icon: '👁️' },
+            { title: t.safeSecurity, desc: t.safeSecurityDesc, icon: '🔒' },
+            { title: t.noPressure, desc: t.noPressureDesc, icon: '💛' }
+          ].map((card, idx) => (
+            <div key={idx} style={{ backgroundColor: '#111827', borderRadius: '0.75rem', padding: '2rem', border: '1px solid #1f2937' }}>
+              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{card.icon}</div>
+              <h3 style={{ fontSize: '1.125rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>{card.title}</h3>
+              <p style={{ color: '#9ca3af', fontSize: '0.875rem' }}>{card.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section ref={reviewsRef} style={{ maxWidth: '1280px', margin: '0 auto', padding: '5rem 1rem', borderTop: '1px solid #1f2937' }}>
+        <h2 style={{ fontSize: '2.25rem', fontWeight: 'bold', marginBottom: '3rem' }}>{t.reviews}</h2>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
+          {reviews.map((review, idx) => (
+            <div key={idx} style={{ backgroundColor: '#111827', borderRadius: '0.75rem', padding: '2rem', border: '1px solid #1f2937' }}>
+              <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} style={{ color: '#fbbf24', fontSize: '0.875rem' }}>★</span>
+                ))}
+              </div>
+              <p style={{ color: '#d1d5db', fontSize: '0.875rem', marginBottom: '1.5rem', lineHeight: 1.6 }}>{review.text}</p>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                <div style={{ backgroundColor: '#fbbf24', color: '#000000', width: '2.5rem', height: '2.5rem', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '0.875rem' }}>{review.initials}</div>
+                <div>
+                  <div style={{ fontWeight: '600' }}>{review.author}</div>
+                  <div style={{ color: '#9ca3af', fontSize: '0.875rem' }}>{review.profession}, {review.city} • {review.timeframe}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ backgroundColor: '#111827', borderRadius: '0.75rem', padding: '2rem', border: '1px solid #1f2937', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '2rem', textAlign: 'center' }}>
+          <div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#fbbf24' }}>4.9/5</div>
+            <div style={{ color: '#9ca3af', fontSize: '0.875rem' }}>{t.overallRating}</div>
+          </div>
+          <div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#fbbf24' }}>5,000+</div>
+            <div style={{ color: '#9ca3af', fontSize: '0.875rem' }}>{t.transactionsDone}</div>
+          </div>
+          <div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#fbbf24' }}>&lt;10-15 min</div>
+            <div style={{ color: '#9ca3af', fontSize: '0.875rem' }}>{t.avgProcessTime}</div>
+          </div>
+        </div>
+      </section>
+
+      <section ref={sellGoldRef} style={{ backgroundColor: '#1a1410', padding: '8rem 1rem', marginTop: '5rem', borderTop: '1px solid #78350f' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
+          <h2 style={{ fontSize: '3.5rem', fontWeight: 'bold', marginBottom: '1.5rem', lineHeight: 1.2 }}>
+            {t.sellGoldHeading.split(' — ')[0]} <br />
+            <span style={{ color: '#fbbf24' }}>{t.sellGoldHeading.split(' — ')[1]}</span>
+          </h2>
+          <p style={{ color: '#9ca3af', fontSize: '1.125rem', marginBottom: '3rem' }}>{t.readyToSell}</p>
+
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="tel:+918618542353" style={{ backgroundColor: '#fbbf24', color: '#000000', fontWeight: 'bold', padding: '0.875rem 2rem', borderRadius: '0.375rem', border: 'none', cursor: 'pointer', fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>{t.callNowConsultation}</a>
+            <button onClick={() => scrollToSection(estimateRef)} style={{ backgroundColor: 'transparent', color: '#ffffff', fontWeight: 'bold', padding: '0.875rem 2rem', borderRadius: '0.375rem', border: '1px solid #fbbf24', cursor: 'pointer', fontSize: '1rem' }}>{t.calculateValueFirst}</button>
+            <a href="https://wa.me/918618542353?text=Hi%20Carat%20Money!%20I%20want%20to%20book%20an%20appointment%20to%20sell%20my%20gold." target="_blank" rel="noopener noreferrer" style={{ backgroundColor: '#25D366', color: '#ffffff', fontWeight: 'bold', padding: '0.875rem 2rem', borderRadius: '0.375rem', border: 'none', cursor: 'pointer', fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>{t.bookAppointmentWhatsApp}</a>
+          </div>
+        </div>
+      </section>
+
       <footer style={{ backgroundColor: '#0f0f0f', borderTop: '1px solid #1f2937', marginTop: '0', padding: '3rem 1rem' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', textAlign: 'center', color: '#6b7280' }}>
           <p>© 2026 Carat Money India. All rights reserved.</p>
