@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Check, Phone, MessageCircle } from 'lucide-react';
 
 const CaratMoney = () => {
   const [language, setLanguage] = useState('en');
   const [weight, setWeight] = useState('');
   const [purity, setPurity] = useState('22');
-  const [goldType, setGoldType] = useState('jewellery');
+  const [mobileNumber, setMobileNumber] = useState('');
+  const [mobileError, setMobileError] = useState('');
   const [estimatedValue, setEstimatedValue] = useState(0);
 
   const RATE_24K = 13500;
@@ -17,6 +17,35 @@ const CaratMoney = () => {
     14: 0.585
   };
 
+  // Function to format Indian numbers with commas (1,23,456)
+  const formatIndianNumber = (num) => {
+    if (!num) return '0';
+    const str = num.toString();
+    const lastThree = str.slice(-3);
+    const otherNumbers = str.slice(0, -3);
+    if (otherNumbers !== '') {
+      return otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ',' + lastThree;
+    }
+    return lastThree;
+  };
+
+  // Validate mobile number (10 digits only)
+  const validateMobileNumber = (number) => {
+    const phoneRegex = /^[0-9]{10}$/;
+    return phoneRegex.test(number);
+  };
+
+  const handleMobileChange = (e) => {
+    const value = e.target.value;
+    setMobileNumber(value);
+    
+    if (value && !validateMobileNumber(value)) {
+      setMobileError('Please enter a valid 10 digit mobile number');
+    } else {
+      setMobileError('');
+    }
+  };
+
   const translations = {
     en: {
       header: 'From Ornament To Money. In Minutes!',
@@ -25,25 +54,27 @@ const CaratMoney = () => {
       happyCustomers: 'Happy Customers',
       avgRating: 'Average Rating',
       weight: 'Weight (in grams)',
-      goldPurity: 'Gold Purity (Karat)',
-      goldType: 'Gold Type',
-      karat24: '24 Karat — 99.9% Pure',
-      karat22: '22 Karat — 91.6% Pure',
-      karat18: '18 Karat — 75% Pure',
-      karat14: '14 Karat — 58.5% Pure',
-      jewellery: 'Jewellery / Ornaments',
-      coins: 'Gold Coins / Bars',
-      scrap: 'Scrap / Broken Pieces',
+      goldPurity: 'Gold Purity (Carat)',
+      mobileNumber: 'Mobile Number',
+      carat24: '24 Carat — 99.9% Pure',
+      carat22: '22 Carat — 91.6% Pure',
+      carat18: '18 Carat — 75% Pure',
+      carat14: '14 Carat — 58.5% Pure',
       estimatedValue: 'Estimated Value',
       youReceive: 'You Receive',
       today: "Today's Carat Money Rate",
       calcTitle: 'Gold Value Estimator',
-      calcSubtitle: 'Check your gold value. Right now.'
+      calcSubtitle: 'Check your gold value. Right now.',
+      serviceFeeDeduction: 'Service Fee Deduction (3%)',
+      getExactQuote: 'Get Exact Quote →',
+      enterMobile: 'Enter 10 digit mobile number'
     },
     hi: {
       header: 'गहना से पैसा। मिनटों में!',
       weight: 'वजन (ग्राम में)',
-      youReceive: 'आप पाएंगे'
+      youReceive: 'आप पाएंगे',
+      mobileNumber: 'मोबाइल नंबर',
+      enterMobile: '10 अंकों का मोबाइल नंबर दर्ज करें'
     }
   };
 
@@ -51,25 +82,30 @@ const CaratMoney = () => {
 
   const calculateValue = () => {
     if (!weight || weight <= 0) {
-      setEstimatedValue(0);
-      return;
+      return 0;
     }
     const weightNum = parseFloat(weight);
     const purityPercent = purities[purity];
     const grossValue = weightNum * purityPercent * RATE_24K;
     const deduction = grossValue * 0.03;
     const finalValue = grossValue - deduction;
-    setEstimatedValue(Math.round(finalValue));
+    return Math.round(finalValue);
   };
 
   React.useEffect(() => {
-    calculateValue();
+    setEstimatedValue(calculateValue());
   }, [weight, purity]);
 
   const rate24K = RATE_24K;
   const rate22K = Math.round(RATE_24K * 0.916);
   const rate18K = Math.round(RATE_24K * 0.750);
   const rate14K = Math.round(RATE_24K * 0.585);
+
+  // Check if form is complete and valid
+  const isFormValid = weight && weight > 0 && mobileNumber && !mobileError;
+
+  const grossValue = Math.round(parseFloat(weight || 0) * purities[purity] * RATE_24K);
+  const deductionValue = Math.round(parseFloat(weight || 0) * purities[purity] * RATE_24K * 0.03);
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#000000', color: '#ffffff', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
@@ -91,9 +127,9 @@ const CaratMoney = () => {
         <div style={{ backgroundColor: '#0f0f0f', borderTop: '1px solid #1f2937', padding: '0.75rem', fontSize: '0.875rem', color: '#9ca3af', overflowX: 'auto' }}>
           <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', gap: '1.5rem' }}>
             <span style={{ color: '#fbbf24', fontWeight: 'bold' }}>{t.today}</span>
-            <div>24K: <span style={{ color: '#ffffff' }}>₹{rate24K}/gram</span></div>
-            <div>22K: <span style={{ color: '#ffffff' }}>₹{rate22K}/gram</span></div>
-            <div>18K: <span style={{ color: '#ffffff' }}>₹{rate18K}/gram</span></div>
+            <div>24 Carat: <span style={{ color: '#ffffff' }}>₹{formatIndianNumber(rate24K)}/gram</span></div>
+            <div>22 Carat: <span style={{ color: '#ffffff' }}>₹{formatIndianNumber(rate22K)}/gram</span></div>
+            <div>18 Carat: <span style={{ color: '#ffffff' }}>₹{formatIndianNumber(rate18K)}/gram</span></div>
           </div>
         </div>
       </nav>
@@ -126,7 +162,7 @@ const CaratMoney = () => {
           <div>
             <div style={{ marginBottom: '1.5rem' }}>
               <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem' }}>
-                {t.weight}
+                {t.weight} <span style={{ color: '#ef4444' }}>*</span>
               </label>
               <input
                 type="number"
@@ -134,7 +170,7 @@ const CaratMoney = () => {
                 value={weight}
                 onChange={(e) => setWeight(e.target.value)}
                 placeholder="Enter weight in grams"
-                style={{ width: '100%', backgroundColor: '#1f2937', border: '1px solid #374151', borderRadius: '0.375rem', padding: '0.75rem', color: '#ffffff' }}
+                style={{ width: '100%', backgroundColor: '#1f2937', border: weight ? '1px solid #10b981' : '1px solid #374151', borderRadius: '0.375rem', padding: '0.75rem', color: '#ffffff' }}
               />
             </div>
 
@@ -148,48 +184,71 @@ const CaratMoney = () => {
                 onChange={(e) => setPurity(e.target.value)}
                 style={{ width: '100%', backgroundColor: '#1f2937', border: '1px solid #374151', borderRadius: '0.375rem', padding: '0.75rem', color: '#ffffff', cursor: 'pointer' }}
               >
-                <option value="24">{t.karat24}</option>
-                <option value="22">{t.karat22}</option>
-                <option value="18">{t.karat18}</option>
-                <option value="14">{t.karat14}</option>
+                <option value="24">{t.carat24}</option>
+                <option value="22">{t.carat22}</option>
+                <option value="18">{t.carat18}</option>
+                <option value="14">{t.carat14}</option>
               </select>
             </div>
 
             <div>
               <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem' }}>
-                {t.goldType}
+                {t.mobileNumber} <span style={{ color: '#ef4444' }}>*</span>
               </label>
-              <select
-                id="goldType"
-                value={goldType}
-                onChange={(e) => setGoldType(e.target.value)}
-                style={{ width: '100%', backgroundColor: '#1f2937', border: '1px solid #374151', borderRadius: '0.375rem', padding: '0.75rem', color: '#ffffff', cursor: 'pointer' }}
-              >
-                <option value="jewellery">{t.jewellery}</option>
-                <option value="coins">{t.coins}</option>
-                <option value="scrap">{t.scrap}</option>
-              </select>
+              <input
+                type="text"
+                id="mobileNumber"
+                value={mobileNumber}
+                onChange={handleMobileChange}
+                placeholder={t.enterMobile}
+                maxLength="10"
+                style={{ width: '100%', backgroundColor: '#1f2937', border: mobileError ? '2px solid #ef4444' : mobileNumber && !mobileError ? '1px solid #10b981' : '1px solid #374151', borderRadius: '0.375rem', padding: '0.75rem', color: '#ffffff' }}
+              />
+              {mobileError && (
+                <div style={{ color: '#ef4444', fontSize: '0.875rem', marginTop: '0.25rem' }}>
+                  {mobileError}
+                </div>
+              )}
             </div>
           </div>
 
           <div style={{ backgroundColor: '#1f2937', borderRadius: '0.5rem', padding: '2rem', border: '1px solid #78350f' }}>
             <div style={{ marginBottom: '1.5rem' }}>
               <div style={{ fontSize: '0.875rem', color: '#9ca3af', marginBottom: '0.5rem' }}>Gross Value</div>
-              <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#fbbf24' }}>₹{Math.round(parseFloat(weight || 0) * purities[purity] * RATE_24K)}</div>
+              <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#fbbf24' }}>₹{formatIndianNumber(grossValue)}</div>
             </div>
 
             <div style={{ marginBottom: '1.5rem', paddingBottom: '1.5rem', borderBottom: '1px solid #374151' }}>
-              <div style={{ fontSize: '0.875rem', color: '#9ca3af', marginBottom: '0.5rem' }}>Jewellery (3% deduction)</div>
-              <div style={{ fontSize: '1.25rem', color: '#ef4444' }}>-₹{Math.round(parseFloat(weight || 0) * purities[purity] * RATE_24K * 0.03)}</div>
+              <div style={{ fontSize: '0.875rem', color: '#9ca3af', marginBottom: '0.5rem' }}>{t.serviceFeeDeduction}</div>
+              <div style={{ fontSize: '1.25rem', color: '#ef4444' }}>-₹{formatIndianNumber(deductionValue)}</div>
             </div>
 
             <div>
               <div style={{ fontSize: '0.875rem', color: '#9ca3af', marginBottom: '0.5rem' }}>{t.youReceive}</div>
-              <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#22c55e' }}>~₹{estimatedValue.toLocaleString()}</div>
+              <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#22c55e' }}>~₹{formatIndianNumber(estimatedValue)}</div>
             </div>
 
-            <button style={{ width: '100%', backgroundColor: '#f59e0b', color: '#000000', fontWeight: 'bold', padding: '0.75rem', borderRadius: '0.375rem', border: 'none', marginTop: '1.5rem', cursor: 'pointer', fontSize: '1rem' }}>
-              Get Exact Quote →
+            <button 
+              onClick={() => {
+                if (isFormValid) {
+                  alert(`Quote generated for ${weight}g of ${purity} Carat gold. Mobile: ${mobileNumber}\nYou will receive: ₹${formatIndianNumber(estimatedValue)}`);
+                }
+              }}
+              disabled={!isFormValid}
+              style={{ 
+                width: '100%', 
+                backgroundColor: isFormValid ? '#f59e0b' : '#6b7280',
+                color: '#000000', 
+                fontWeight: 'bold', 
+                padding: '0.75rem', 
+                borderRadius: '0.375rem', 
+                border: 'none', 
+                marginTop: '1.5rem', 
+                cursor: isFormValid ? 'pointer' : 'not-allowed',
+                fontSize: '1rem',
+                opacity: isFormValid ? 1 : 0.6
+              }}>
+              {t.getExactQuote}
             </button>
           </div>
         </div>
