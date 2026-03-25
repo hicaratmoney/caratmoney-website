@@ -407,7 +407,7 @@ const CaratMoney = () => {
       {/* Footer */}
       <footer style={{ backgroundColor: '#0f0f0f', borderTop: '1px solid #1f2937', marginTop: '5rem', padding: '3rem 1rem' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', textAlign: 'center', color: '#6b7280' }}>
-          <p>© 2026 Carat Money India. All rights reserved.</p>
+          <p>© 2026 Carat Money. All rights reserved.</p>
         </div>
       </footer>
     </div>
