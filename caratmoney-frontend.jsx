@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { MessageCircle } from 'lucide-react';
 
 const CaratMoney = () => {
   const [language, setLanguage] = useState('en');
@@ -7,6 +8,13 @@ const CaratMoney = () => {
   const [mobileNumber, setMobileNumber] = useState('');
   const [mobileError, setMobileError] = useState('');
   const [estimatedValue, setEstimatedValue] = useState(0);
+
+  // Section refs for smooth scroll
+  const estimateRef = useRef(null);
+  const processRef = useRef(null);
+  const whyUsRef = useRef(null);
+  const reviewsRef = useRef(null);
+  const sellGoldRef = useRef(null);
 
   const RATE_24K = 13500;
 
@@ -44,9 +52,13 @@ const CaratMoney = () => {
     }
   };
 
+  const scrollToSection = (ref) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const translations = {
     en: {
-      header: 'From Ornament To Money. In Minutes!',
+      header: 'Every Carat Counts — Best Rates. Real Fast.',
       subheader: 'Sell your gold at India\'s best rates — weighed, tested, and paid in under 20 minutes.',
       goldPurchased: 'Gold Purchased',
       happyCustomers: 'Happy Customers',
@@ -65,161 +77,59 @@ const CaratMoney = () => {
       calcSubtitle: 'Check your gold value. Right now.',
       serviceFeeDeduction: 'Service Fee Deduction (3%)',
       getExactQuote: 'Get Exact Quote →',
-      enterMobile: 'Enter 10 digit mobile number'
-    },
-    bn: {
-      header: 'গহনা থেকে অর্থ। মিনিটে!',
-      subheader: 'ভারতের সেরা হারে আপনার সোনা বিক্রয় করুন — ওজন করা, পরীক্ষা করা এবং ২০ মিনিটের মধ্যে অর্থ প্রদান করা।',
-      goldPurchased: 'সোনা ক্রয় করা',
-      happyCustomers: 'সন্তুষ্ট গ্রাহক',
-      avgRating: 'গড় রেটিং',
-      weight: 'ওজন (গ্রামে)',
-      goldPurity: 'সোনার বিশুদ্ধতা (ক্যারেট)',
-      mobileNumber: 'মোবাইল নম্বর',
-      carat24: '24 ক্যারেট — 99.9% খাঁটি',
-      carat22: '22 ক্যারেট — 91.6% খাঁটি',
-      carat18: '18 ক্যারেট — 75% খাঁটি',
-      carat14: '14 ক্যারেট — 58.5% খাঁটি',
-      estimatedValue: 'অনুমানিত মূল্য',
-      youReceive: 'আপনি পাবেন',
-      today: 'আজকের ক্যারেট মানি রেট',
-      calcTitle: 'সোনার মূল্য আনুমানিক',
-      calcSubtitle: 'এখনই আপনার সোনার মূল্য জানুন।',
-      serviceFeeDeduction: 'সেবা ফি ছাড় (3%)',
-      getExactQuote: 'সঠিক উদ্ধৃতি পান →',
-      enterMobile: '10 অঙ্কের মোবাইল নম্বর দিন'
+      enterMobile: 'Enter 10 digit mobile number',
+      getQuoteForYourGold: 'Get Quote For Your Gold',
+      howItWorks: 'How It Works',
+      callNowConsultation: '☎ Call Now — Free Consultation',
+      calculateValueFirst: 'Calculate Value First',
+      bookAppointmentWhatsApp: '💬 Book Appointment on WhatsApp',
+      pricingHeading: 'How we price your gold',
+      pricingSubtext: 'We use live MCX/IBJA gold rates updated daily. Our spread is the tightest in the industry — you always get maximum value for your gold.',
+      noDedications: 'No deductions for making charges. No hidden fees. What you see is what you get — transferred directly to your bank account.',
+      hallmark: 'HALLMARK',
+      karat: 'CARAT',
+      purityPercent: 'PURITY %',
+      ratePerGram: 'RATE (PER GRAM)',
+      bis999: 'BIS 999',
+      bis916: 'BIS 916',
+      bis750: 'BIS 750',
+      bis585: 'BIS 585',
+      processTitle: 'Simple. Fast. Transparent.',
+      processSubtitle: 'Gold into account in minutes.',
+      callText: 'Call',
+      callDesc: 'Call us, or WhatsApp. We will book you an appointment',
+      weighAndTest: 'Weigh & Test',
+      weighDesc: 'Certified BIS weighing. XRF purity testing done in front of you 100% transparent process.',
+      getYourQuote: 'Get Your Quote',
+      quoteDesc: 'Instant price quote based on live market rates. Best rate guaranteed — no negotiation needed.',
+      instantMoney: 'Instant Money',
+      instantDesc: 'Instant bank transfer within minutes.',
+      whyUs: 'Why Carat Money',
+      bisCertified: 'BIS Certified Testing',
+      bisCertifiedDesc: 'Every gram tested using XRF technology certified by Bureau of Indian Standards. No guesswork — just accurate, certified purity measurement.',
+      liveMcx: 'Live MCX Rate Pricing',
+      liveMcxDesc: 'Your gold is priced against live MCX and IBJA rates updated daily. You always get the market rate, not a discounted arbitrary number.',
+      instantBankTransfer: 'Instant Bank Transfer',
+      instantBankDesc: 'IMPS/RTGS transfer to your bank account in under 5 minutes of deal closure.',
+      fullTransparency: 'Full Transparency',
+      fullTransparencyDesc: 'Every step — weighing, purity testing, rate calculation — happens in front of you. We hand you a detailed receipt for every transaction.',
+      safeSecurity: 'Safe & Secure',
+      safeSecurityDesc: 'CCTV-monitored premises, insured vault, and trained staff. Your gold is in the safest hands from the moment you walk in.',
+      noPressure: 'No Pressure. Ever.',
+      noPressureDesc: 'Don\'t like the quote? Walk away. No questions asked. Your trust matters more than a transaction.',
+      reviews: 'Reviews',
+      overallRating: 'Overall Rating',
+      transactionsDone: 'Transactions Done',
+      avgProcessTime: 'Avg. Process Time',
+      sellGoldHeading: 'Every Carat Counts — Best Rates. Real Fast.',
+      readyToSell: 'Ready to sell your gold?'
     },
     hi: {
-      header: 'गहने से पैसा। मिनटों में!',
-      subheader: 'भारत की सर्वश्रेष्ठ दरों पर अपना सोना बेचें — तौला जाता है, परीक्षण किया जाता है, और 20 मिनट के अंदर पैसा दिया जाता है।',
-      goldPurchased: 'सोना खरीदा गया',
-      happyCustomers: 'खुश ग्राहक',
-      avgRating: 'औसत रेटिंग',
+      header: 'हर कैरेट मायने रखता है — सर्वश्रेष्ठ दरें। सच में तेज़।',
       weight: 'वजन (ग्राम में)',
-      goldPurity: 'सोने की शुद्धता (कैरेट)',
-      mobileNumber: 'मोबाइल नंबर',
-      carat24: '24 कैरेट — 99.9% शुद्ध',
-      carat22: '22 कैरेट — 91.6% शुद्ध',
-      carat18: '18 कैरेट — 75% शुद्ध',
-      carat14: '14 कैरेट — 58.5% शुद्ध',
-      estimatedValue: 'अनुमानित मूल्य',
       youReceive: 'आप पाएंगे',
-      today: 'आज का कैरेट मनी दर',
-      calcTitle: 'सोने की कीमत अनुमानक',
-      calcSubtitle: 'अभी अपने सोने की कीमत जानें।',
-      serviceFeeDeduction: 'सेवा शुल्क कटौती (3%)',
-      getExactQuote: 'सटीक उद्धरण प्राप्त करें →',
-      enterMobile: '10 अंकों का मोबाइल नंबर दर्ज करें'
-    },
-    kn: {
-      header: 'ಆಭರಣದಿಂದ ಹಣ. ನಿಮಿಷಗಳಲ್ಲಿ!',
-      subheader: 'ಭಾರತದ ಅತ್ಯುತ್ತಮ ದರದಲ್ಲಿ ನಿಮ್ಮ ಚಿನ್ನ ಮಾರಿ — ತೂಕ ಹಾಕಲಾಯಿತು, ಪರೀಕ್ಷೆ ಮಾಡಿದೆ ಮತ್ತು 20 ನಿಮಿಷದೊಳಗೆ ಹಣ ನೀಡಲಾಯಿತು।',
-      goldPurchased: 'ಚಿನ್ನ ಖರೀದಿ',
-      happyCustomers: 'ಸಂತುಷ್ಟ ಗ್ರಾಹಕರು',
-      avgRating: 'ಸರಾಸರಿ ರೇಟಿಂಗ್',
-      weight: 'ತೂಕ (ಗ್ರಾಮ್‌ನಲ್ಲಿ)',
-      goldPurity: 'ಚಿನ್ನದ ಶುದ್ಧತೆ (ಕ್ಯಾರೆಟ್)',
-      mobileNumber: 'ಮೊಬೈಲ್ ಸಂಖ್ಯೆ',
-      carat24: '24 ಕ್ಯಾರೆಟ್ — 99.9% ಶುದ್ಧ',
-      carat22: '22 ಕ್ಯಾರೆಟ್ — 91.6% ಶುದ್ಧ',
-      carat18: '18 ಕ್ಯಾರೆಟ್ — 75% ಶುದ್ಧ',
-      carat14: '14 ಕ್ಯಾರೆಟ್ — 58.5% ಶುದ್ಧ',
-      estimatedValue: 'ಅನುಮಾನಿತ ಮೌಲ್ಯ',
-      youReceive: 'ನೀವು ಪಡೆಯುವಿರಿ',
-      today: 'ಇಂದಿನ ಕ್ಯಾರೆಟ್ ಮನಿ ದರ',
-      calcTitle: 'ಚಿನ್ನದ ಮೂಲ್ಯ ಅನುಮಾನಕ',
-      calcSubtitle: 'ಈಗಲೇ ನಿಮ್ಮ ಚಿನ್ನದ ಮೌಲ್ಯ ಪರಿಶೀಲಿಸಿ।',
-      serviceFeeDeduction: 'ಸೇವಾ ಶುಲ್ಕ ಕಾಟ (3%)',
-      getExactQuote: 'ನಿಖರ ಉದ್ಧರಣ ಪಡೆಯಿರಿ →',
-      enterMobile: '10 ಅಂಕಿ ಮೊಬೈಲ್ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ'
-    },
-    ml: {
-      header: 'നിലവിൽ നിന്ന് പണത്തിലേക്ക്. മിനിറ്റുകളിൽ!',
-      subheader: 'ഇന്ത്യയുടെ മികച്ച നിരക്കിൽ നിങ്ങളുടെ സ്വർണ്ണം വിറ്റുകൊടുക്കുക — തൂക്കം, പരിശോധിക്കപ്പെടുന്നു, 20 മിനിറ്റിനുള്ളിൽ പണം നൽകപ്പെടുന്നു.',
-      goldPurchased: 'സ്വർണ്ണം വാങ്ങിയത്',
-      happyCustomers: 'സന്തുഷ്ട ഗ്രാഹകർ',
-      avgRating: 'ശരാശരി റേറ്റിംഗ്',
-      weight: 'ഭാരം (ഗ്രാമിൽ)',
-      goldPurity: 'സ്വർണ്ണ ശുദ്ധത (കാരറ്റ്)',
-      mobileNumber: 'മൊബൈൽ നമ്പർ',
-      carat24: '24 കാരറ്റ് — 99.9% ശുദ്ധ',
-      carat22: '22 കാരറ്റ് — 91.6% ശുദ്ധ',
-      carat18: '18 കാരറ്റ് — 75% ശുദ്ധ',
-      carat14: '14 കാരറ്റ് — 58.5% ശുദ്ധ',
-      estimatedValue: 'കണക്കാക്കിയ മൂല്യം',
-      youReceive: 'നിങ്ങൾ പലിശ',
-      today: 'ഇന്നത്തെ കാരറ്റ് മണി നിരക്ക്',
-      calcTitle: 'സ്വർണ്ണ മൂല്യ കണക്കാണ്',
-      calcSubtitle: 'ഇപ്പോൾ നിങ്ങളുടെ സ്വർണ്ണ മൂല്യം പരിശോധിക്കുക।',
-      serviceFeeDeduction: 'സേവന ഫീസ് കുറയ്ക്കൽ (3%)',
-      getExactQuote: 'കൃത്യമായ ഉദ്ധരണം ലഭിക്കുക →',
-      enterMobile: '10 ഡിജിറ്റ് മൊബൈൽ നമ്പർ നൽകുക'
-    },
-    mr: {
-      header: 'दागिन्यांपासून पैसे. मिनिटांत!',
-      subheader: 'भारतातील सर्वोत्तम दरांवर तुमचे सोने विक्रय करा — वजन केले, चाचले आणि 20 मिनिटांत पैसे दिले.',
-      goldPurchased: 'सोने खरेदी',
-      happyCustomers: 'खुश ग्राहक',
-      avgRating: 'सरासरी रेटिंग',
-      weight: 'वजन (ग्रामांत)',
-      goldPurity: 'सोन्याची शुद्धता (कॅरेट)',
       mobileNumber: 'मोबाइल नंबर',
-      carat24: '24 कॅरेट — 99.9% शुद्ध',
-      carat22: '22 कॅरेट — 91.6% शुद्ध',
-      carat18: '18 कॅरेट — 75% शुद्ध',
-      carat14: '14 कॅरेट — 58.5% शुद्ध',
-      estimatedValue: 'अनुमानित मूल्य',
-      youReceive: 'तुम्हाला मिळेल',
-      today: 'आजचा कॅरेट मनी दर',
-      calcTitle: 'सोन्याचे मूल्य अनुमानक',
-      calcSubtitle: 'आत्ताच तुमच्या सोन्याचे मूल्य तपासा।',
-      serviceFeeDeduction: 'सेवा शुल्क कपात (3%)',
-      getExactQuote: 'अचूक उद्धरण मिळवा →',
-      enterMobile: '10 अंकांचा मोबाइल नंबर टाका'
-    },
-    ta: {
-      header: 'நகையிலிருந்து பணம். நிமிषங்களில்!',
-      subheader: 'இந்தியாவின் சிறந்த விலையில் உங்கள் தங்கத்தை விற்கவும் — எடை, சோதனை மற்றும் 20 நிமிடங்களுக்குள் பணம் வழங்கப்படுகிறது.',
-      goldPurchased: 'தங்கம் ক্রয়',
-      happyCustomers: 'மகிழ்ந்த வாடிக்கையாளர்கள்',
-      avgRating: 'சராசரி রेটிங்',
-      weight: 'எடை (கிராமில்)',
-      goldPurity: 'தங்கத்தின் தூய்மை (கேரட்)',
-      mobileNumber: 'மொபைல் எண்',
-      carat24: '24 கேரட் — 99.9% தூய',
-      carat22: '22 கேரட் — 91.6% தூய',
-      carat18: '18 கேரட் — 75% தூய',
-      carat14: '14 கேரட் — 58.5% தூய',
-      estimatedValue: 'மதிப்பிடப்பட்ட மூல்ய',
-      youReceive: 'நீங்கள் பெறுவீர்கள்',
-      today: 'இன்றைய கேரட் மணி விகிதம்',
-      calcTitle: 'தங்கத்தின் மூல்य கணக்கீட்டி',
-      calcSubtitle: 'இப்போதே உங்கள் தங்கத்தின் மூல்யத்தை சரிபார்க்கவும்.',
-      serviceFeeDeduction: 'சேவை கட்டணம் குறைப்பு (3%)',
-      getExactQuote: 'சரியான மேற்கோள் பெறவும் →',
-      enterMobile: '10 இலக்க மொபைல் எண்ணை உள்ளிடவும்'
-    },
-    te: {
-      header: 'ఆభరణ నుండి డబ్బు. నిమిషాలలో!',
-      subheader: 'భారతదేశపు ఉత్తమ రేటుకు మీ బంగారాన్ని విక్రయించండి — బరువు, పరీక్ష చేయబడింది, 20 నిమిషాలలో డబ్బు ఇవ్వబడుతుంది.',
-      goldPurchased: 'బంగారం కొనుగోలు',
-      happyCustomers: 'సంతుష్ట గ్రాహకులు',
-      avgRating: 'సగటు రేటింగ్',
-      weight: 'బరువు (గ్రాములలో)',
-      goldPurity: 'బంగారం స్వచ్ఛత (క్యారెట్)',
-      mobileNumber: 'మోబైల్ నంబర్',
-      carat24: '24 క్యారెట్ — 99.9% శుద్ధ',
-      carat22: '22 క్యారెట్ — 91.6% శుద్ధ',
-      carat18: '18 క్యారెట్ — 75% శుద్ధ',
-      carat14: '14 క్యారెట్ — 58.5% శుద్ధ',
-      estimatedValue: 'అంచనా విలువ',
-      youReceive: 'మీకు వస్తుంది',
-      today: 'ఈ రోజు క్యారెట్ మనీ రేట్',
-      calcTitle: 'బంగారం విలువ కాలిక్యులేటర్',
-      calcSubtitle: 'ఇప్పుడే మీ బంగారం విలువను తనిఖీ చేయండి.',
-      serviceFeeDeduction: 'సేవా ఫీ తగ్గింపు (3%)',
-      getExactQuote: 'ఖచ్చితమైన కోట్ పొందండి →',
-      enterMobile: '10 అంకెల మోబైల్ నంబర్ నమోదు చేయండి'
+      enterMobile: '10 अंकों का मोबाइल नंबर दर्ज करें'
     }
   };
 
@@ -251,26 +161,81 @@ const CaratMoney = () => {
   const grossValue = Math.round(parseFloat(weight || 0) * purities[purity] * RATE_24K);
   const deductionValue = Math.round(parseFloat(weight || 0) * purities[purity] * RATE_24K * 0.03);
 
+  // Review data
+  const reviews = [
+    {
+      text: "Excellent experience at Carat Money. The staff were very professional and patient. The quality of the service was outstanding.",
+      author: "Priya Sharma",
+      city: "Mumbai",
+      profession: "Consultant",
+      timeframe: "1 month ago",
+      initials: "PS"
+    },
+    {
+      text: "I compared rates with other buyers in my area. Carat Money offered ₹8,400 more per 10 grams than others. The process was completely transparent.",
+      author: "Arjun Nair",
+      city: "Bangalore",
+      profession: "Business Owner",
+      timeframe: "2 months ago",
+      initials: "AN"
+    },
+    {
+      text: "As a woman going alone to sell gold, I was nervous. The staff at Carat Money were professional and respectful. I felt completely safe.",
+      author: "Anjali Patel",
+      city: "Delhi",
+      profession: "Teacher",
+      timeframe: "3 weeks ago",
+      initials: "AP"
+    },
+    {
+      text: "The XRF testing machine was a game changer. I could see the exact purity percentage on screen. No trust issues whatsoever.",
+      author: "Vikram Dutta",
+      city: "Kolkata",
+      profession: "IT Professional",
+      timeframe: "2 weeks ago",
+      initials: "VD"
+    },
+    {
+      text: "Money was transferred to my bank account instantly. The entire process from walking in to getting money was under 12 minutes.",
+      author: "Rahul Verma",
+      city: "Pune",
+      profession: "Engineer",
+      timeframe: "6 months ago",
+      initials: "RV"
+    },
+    {
+      text: "Outstanding service. The team explained every step clearly. I got the best rate and no hidden charges. Highly recommended.",
+      author: "Shruti Bansal",
+      city: "Mumbai",
+      profession: "Housewife",
+      timeframe: "5 weeks ago",
+      initials: "SB"
+    }
+  ];
+
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#000000', color: '#ffffff', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-      {/* Navbar */}
+      {/* Sticky Navigation Bar */}
       <nav style={{ backgroundColor: '#000000', borderBottom: '1px solid #1f2937', position: 'sticky', top: 0, zIndex: 50 }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#fbbf24' }}>Carat Money</div>
-          <select 
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-            style={{ backgroundColor: '#111827', color: '#ffffff', padding: '0.5rem', borderRadius: '0.375rem', border: '1px solid #374151', cursor: 'pointer' }}
-          >
-            <option value="en">English</option>
-            <option value="bn">বাংলা</option>
-            <option value="hi">हिंदी</option>
-            <option value="kn">ಕನ್ನಡ</option>
-            <option value="ml">മലയാളം</option>
-            <option value="mr">मराठी</option>
-            <option value="ta">தமிழ்</option>
-            <option value="te">తెలుగు</option>
-          </select>
+          
+          <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+            <button onClick={() => scrollToSection(estimateRef)} style={{ backgroundColor: 'transparent', border: 'none', color: '#9ca3af', cursor: 'pointer', fontSize: '0.875rem' }}>Estimate</button>
+            <button onClick={() => scrollToSection(processRef)} style={{ backgroundColor: 'transparent', border: 'none', color: '#9ca3af', cursor: 'pointer', fontSize: '0.875rem' }}>Process</button>
+            <button onClick={() => scrollToSection(whyUsRef)} style={{ backgroundColor: 'transparent', border: 'none', color: '#9ca3af', cursor: 'pointer', fontSize: '0.875rem' }}>Why Us</button>
+            <button onClick={() => scrollToSection(reviewsRef)} style={{ backgroundColor: 'transparent', border: 'none', color: '#9ca3af', cursor: 'pointer', fontSize: '0.875rem' }}>Reviews</button>
+            <button onClick={() => scrollToSection(sellGoldRef)} style={{ backgroundColor: '#fbbf24', border: 'none', color: '#000000', cursor: 'pointer', fontSize: '0.875rem', padding: '0.5rem 1rem', borderRadius: '0.375rem', fontWeight: '600' }}>Sell Gold</button>
+            
+            <select 
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              style={{ backgroundColor: '#111827', color: '#ffffff', padding: '0.5rem', borderRadius: '0.375rem', border: '1px solid #374151', cursor: 'pointer' }}
+            >
+              <option value="en">English</option>
+              <option value="hi">हिंदी</option>
+            </select>
+          </div>
         </div>
 
         {/* Rates Bar */}
@@ -285,30 +250,32 @@ const CaratMoney = () => {
       </nav>
 
       {/* Hero Section */}
-      <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '5rem 1rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '3rem', alignItems: 'center' }}>
-        <div>
-          <h1 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '1.5rem', lineHeight: 1.2 }}>{t.header}</h1>
-          <p style={{ fontSize: '1.125rem', color: '#9ca3af', marginBottom: '2rem' }}>{t.subheader}</p>
-        </div>
+      <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '8rem 1rem', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '3.5rem', fontWeight: 'bold', marginBottom: '1.5rem', lineHeight: 1.2 }}>
+          {t.header.split(' — ')[0]} <br />
+          <span style={{ color: '#fbbf24' }}>{t.header.split(' — ')[1]}</span>
+        </h1>
         
-        <div style={{ backgroundColor: '#1f1f1f', borderRadius: '0.75rem', padding: '3rem', border: '1px solid #78350f' }}>
-          <div style={{ fontSize: '3rem', fontWeight: 'bold', color: '#fbbf24', marginBottom: '0.5rem' }}>₹100Cr+</div>
-          <div style={{ color: '#9ca3af', marginBottom: '1.5rem' }}>{t.goldPurchased}</div>
-          <hr style={{ borderColor: '#374151', margin: '1.5rem 0' }} />
-          <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#fbbf24', marginBottom: '0.5rem' }}>5,000+</div>
-          <div style={{ color: '#9ca3af', marginBottom: '1.5rem' }}>{t.happyCustomers}</div>
-          <hr style={{ borderColor: '#374151', margin: '1.5rem 0' }} />
-          <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#fbbf24', marginBottom: '0.5rem' }}>4.9★</div>
-          <div style={{ color: '#9ca3af' }}>{t.avgRating}</div>
+        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '3rem' }}>
+          <button 
+            onClick={() => scrollToSection(estimateRef)}
+            style={{ backgroundColor: '#fbbf24', color: '#000000', fontWeight: 'bold', padding: '0.75rem 1.5rem', borderRadius: '0.375rem', border: 'none', cursor: 'pointer', fontSize: '1rem' }}>
+            {t.getQuoteForYourGold}
+          </button>
+          <button 
+            onClick={() => scrollToSection(processRef)}
+            style={{ backgroundColor: 'transparent', color: '#ffffff', fontWeight: 'bold', padding: '0.75rem 1.5rem', borderRadius: '0.375rem', border: '1px solid #374151', cursor: 'pointer', fontSize: '1rem' }}>
+            {t.howItWorks}
+          </button>
         </div>
       </section>
 
-      {/* Calculator Section */}
-      <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '5rem 1rem', borderTop: '1px solid #1f2937' }}>
+      {/* Estimate Section */}
+      <section ref={estimateRef} style={{ maxWidth: '1280px', margin: '0 auto', padding: '5rem 1rem', borderTop: '1px solid #1f2937' }}>
         <h2 style={{ fontSize: '2.25rem', fontWeight: 'bold', marginBottom: '1rem' }}>{t.calcTitle}</h2>
         <p style={{ color: '#9ca3af', marginBottom: '3rem' }}>{t.calcSubtitle}</p>
 
-        <div style={{ backgroundColor: '#111827', borderRadius: '0.75rem', padding: '2rem', border: '1px solid #1f2937', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+        <div style={{ backgroundColor: '#111827', borderRadius: '0.75rem', padding: '2rem', border: '1px solid #1f2937', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '5rem' }}>
           <div>
             <div style={{ marginBottom: '1.5rem' }}>
               <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem' }}>
@@ -402,14 +369,211 @@ const CaratMoney = () => {
             </button>
           </div>
         </div>
+
+        {/* Pricing Section */}
+        <div style={{ backgroundColor: '#111827', borderRadius: '0.75rem', padding: '3rem', border: '1px solid #1f2937' }}>
+          <h3 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }}>{t.pricingHeading}</h3>
+          <p style={{ color: '#9ca3af', marginBottom: '1.5rem' }}>{t.pricingSubtext}</p>
+          <p style={{ color: '#9ca3af', marginBottom: '2rem' }}>{t.noDedications}</p>
+
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+              <thead>
+                <tr style={{ borderBottom: '1px solid #374151' }}>
+                  <th style={{ color: '#fbbf24', textAlign: 'left', padding: '1rem', fontSize: '0.875rem' }}>{t.hallmark}</th>
+                  <th style={{ color: '#fbbf24', textAlign: 'left', padding: '1rem', fontSize: '0.875rem' }}>{t.karat}</th>
+                  <th style={{ color: '#fbbf24', textAlign: 'left', padding: '1rem', fontSize: '0.875rem' }}>{t.purityPercent}</th>
+                  <th style={{ color: '#fbbf24', textAlign: 'left', padding: '1rem', fontSize: '0.875rem' }}>{t.ratePerGram}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style={{ borderBottom: '1px solid #374151' }}>
+                  <td style={{ color: '#ffffff', padding: '1rem' }}>{t.bis999}</td>
+                  <td style={{ color: '#ffffff', padding: '1rem' }}>24K</td>
+                  <td style={{ color: '#ffffff', padding: '1rem' }}>99.9%</td>
+                  <td style={{ color: '#fbbf24', fontWeight: 'bold', padding: '1rem' }}>₹{formatIndianNumber(rate24K)}</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #374151' }}>
+                  <td style={{ color: '#ffffff', padding: '1rem' }}>{t.bis916}</td>
+                  <td style={{ color: '#ffffff', padding: '1rem' }}>22K</td>
+                  <td style={{ color: '#ffffff', padding: '1rem' }}>91.6%</td>
+                  <td style={{ color: '#fbbf24', fontWeight: 'bold', padding: '1rem' }}>₹{formatIndianNumber(rate22K)}</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid #374151' }}>
+                  <td style={{ color: '#ffffff', padding: '1rem' }}>{t.bis750}</td>
+                  <td style={{ color: '#ffffff', padding: '1rem' }}>18K</td>
+                  <td style={{ color: '#ffffff', padding: '1rem' }}>75.0%</td>
+                  <td style={{ color: '#fbbf24', fontWeight: 'bold', padding: '1rem' }}>₹{formatIndianNumber(rate18K)}</td>
+                </tr>
+                <tr>
+                  <td style={{ color: '#ffffff', padding: '1rem' }}>{t.bis585}</td>
+                  <td style={{ color: '#ffffff', padding: '1rem' }}>14K</td>
+                  <td style={{ color: '#ffffff', padding: '1rem' }}>58.5%</td>
+                  <td style={{ color: '#fbbf24', fontWeight: 'bold', padding: '1rem' }}>₹{formatIndianNumber(rate14K)}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style={{ color: '#6b7280', fontSize: '0.875rem', marginTop: '1.5rem' }}>*Based on MCX rate minus ₹500 spread. Updated daily.</p>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section ref={processRef} style={{ maxWidth: '1280px', margin: '0 auto', padding: '5rem 1rem', borderTop: '1px solid #1f2937' }}>
+        <h2 style={{ fontSize: '2.25rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>{t.processTitle}</h2>
+        <p style={{ color: '#9ca3af', marginBottom: '3rem' }}>{t.processSubtitle}</p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
+          {[
+            { num: '01', title: 'Call', desc: t.callDesc },
+            { num: '02', title: 'Weigh & Test', desc: t.weighDesc },
+            { num: '03', title: 'Get Your Quote', desc: t.quoteDesc },
+            { num: '04', title: 'Instant Money', desc: t.instantDesc }
+          ].map((step, idx) => (
+            <div key={idx} style={{ backgroundColor: '#111827', borderRadius: '0.75rem', padding: '2rem', border: '1px solid #1f2937', textAlign: 'center' }}>
+              <div style={{ fontSize: '2.25rem', fontWeight: 'bold', color: '#fbbf24', marginBottom: '1rem' }}>{step.num}</div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>{step.title}</h3>
+              <p style={{ color: '#9ca3af', fontSize: '0.875rem' }}>{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Why Us Section */}
+      <section ref={whyUsRef} style={{ maxWidth: '1280px', margin: '0 auto', padding: '5rem 1rem', borderTop: '1px solid #1f2937' }}>
+        <h2 style={{ fontSize: '2.25rem', fontWeight: 'bold', marginBottom: '3rem' }}>{t.whyUs}</h2>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+          {[
+            { title: t.bisCertified, desc: t.bisCertifiedDesc, icon: '🏅' },
+            { title: t.liveMcx, desc: t.liveMcxDesc, icon: '📊' },
+            { title: t.instantBankTransfer, desc: t.instantBankDesc, icon: '⚡' },
+            { title: t.fullTransparency, desc: t.fullTransparencyDesc, icon: '👁️' },
+            { title: t.safeSecurity, desc: t.safeSecurityDesc, icon: '🔒' },
+            { title: t.noPressure, desc: t.noPressureDesc, icon: '💛' }
+          ].map((card, idx) => (
+            <div key={idx} style={{ backgroundColor: '#111827', borderRadius: '0.75rem', padding: '2rem', border: '1px solid #1f2937' }}>
+              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{card.icon}</div>
+              <h3 style={{ fontSize: '1.125rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>{card.title}</h3>
+              <p style={{ color: '#9ca3af', fontSize: '0.875rem' }}>{card.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Reviews Section */}
+      <section ref={reviewsRef} style={{ maxWidth: '1280px', margin: '0 auto', padding: '5rem 1rem', borderTop: '1px solid #1f2937' }}>
+        <h2 style={{ fontSize: '2.25rem', fontWeight: 'bold', marginBottom: '3rem' }}>{t.reviews}</h2>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
+          {reviews.map((review, idx) => (
+            <div key={idx} style={{ backgroundColor: '#111827', borderRadius: '0.75rem', padding: '2rem', border: '1px solid #1f2937' }}>
+              <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} style={{ color: '#fbbf24', fontSize: '0.875rem' }}>★</span>
+                ))}
+              </div>
+              <p style={{ color: '#d1d5db', fontSize: '0.875rem', marginBottom: '1.5rem', lineHeight: 1.6 }}>{review.text}</p>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                <div style={{ backgroundColor: '#fbbf24', color: '#000000', width: '2.5rem', height: '2.5rem', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '0.875rem' }}>{review.initials}</div>
+                <div>
+                  <div style={{ fontWeight: '600' }}>{review.author}</div>
+                  <div style={{ color: '#9ca3af', fontSize: '0.875rem' }}>{review.profession}, {review.city} • {review.timeframe}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ backgroundColor: '#111827', borderRadius: '0.75rem', padding: '2rem', border: '1px solid #1f2937', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '2rem', textAlign: 'center' }}>
+          <div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#fbbf24' }}>4.9/5</div>
+            <div style={{ color: '#9ca3af', fontSize: '0.875rem' }}>{t.overallRating}</div>
+          </div>
+          <div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#fbbf24' }}>5,000+</div>
+            <div style={{ color: '#9ca3af', fontSize: '0.875rem' }}>{t.transactionsDone}</div>
+          </div>
+          <div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#fbbf24' }}>&lt;10-15 min</div>
+            <div style={{ color: '#9ca3af', fontSize: '0.875rem' }}>{t.avgProcessTime}</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sell Gold Section */}
+      <section ref={sellGoldRef} style={{ backgroundColor: '#1a1410', padding: '8rem 1rem', marginTop: '5rem', borderTop: '1px solid #78350f' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
+          <h2 style={{ fontSize: '3.5rem', fontWeight: 'bold', marginBottom: '1.5rem', lineHeight: 1.2 }}>
+            Every Carat Counts <br />
+            <span style={{ color: '#fbbf24' }}>Best Rates. Real Fast.</span>
+          </h2>
+          <p style={{ color: '#9ca3af', fontSize: '1.125rem', marginBottom: '3rem' }}>{t.readyToSell}</p>
+          
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a 
+              href="tel:+918618542353"
+              style={{ backgroundColor: '#fbbf24', color: '#000000', fontWeight: 'bold', padding: '0.875rem 2rem', borderRadius: '0.375rem', border: 'none', cursor: 'pointer', fontSize: '1rem', textDecoration: 'none' }}>
+              {t.callNowConsultation}
+            </a>
+            <button 
+              onClick={() => scrollToSection(estimateRef)}
+              style={{ backgroundColor: 'transparent', color: '#ffffff', fontWeight: 'bold', padding: '0.875rem 2rem', borderRadius: '0.375rem', border: '1px solid #fbbf24', cursor: 'pointer', fontSize: '1rem' }}>
+              {t.calculateValueFirst}
+            </button>
+            <a 
+              href="https://wa.me/918618542353?text=Hi%20Carat%20Money!%20I%20want%20to%20book%20an%20appointment%20to%20sell%20my%20gold."
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ backgroundColor: '#25D366', color: '#ffffff', fontWeight: 'bold', padding: '0.875rem 2rem', borderRadius: '0.375rem', border: 'none', cursor: 'pointer', fontSize: '1rem', textDecoration: 'none' }}>
+              {t.bookAppointmentWhatsApp}
+            </a>
+          </div>
+        </div>
       </section>
 
       {/* Footer */}
-      <footer style={{ backgroundColor: '#0f0f0f', borderTop: '1px solid #1f2937', marginTop: '5rem', padding: '3rem 1rem' }}>
+      <footer style={{ backgroundColor: '#0f0f0f', borderTop: '1px solid #1f2937', marginTop: '0', padding: '3rem 1rem' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', textAlign: 'center', color: '#6b7280' }}>
-          <p>© 2026 Carat Money. All rights reserved.</p>
+          <p>© 2026 Carat Money India. All rights reserved.</p>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <a 
+        href="https://wa.me/918618542353?text=Hi%20Carat%20Money!%20I%20want%20to%20book%20an%20appointment%20to%20sell%20my%20gold."
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ 
+          position: 'fixed', 
+          bottom: '2rem', 
+          right: '2rem', 
+          backgroundColor: '#25D366', 
+          color: '#ffffff', 
+          width: '3.5rem', 
+          height: '3.5rem', 
+          borderRadius: '50%', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center',
+          cursor: 'pointer',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+          transition: 'all 0.3s ease',
+          zIndex: 40,
+          textDecoration: 'none'
+        }}
+        onMouseEnter={(e) => {
+          e.target.style.transform = 'scale(1.1)';
+          e.target.style.boxShadow = '0 6px 16px rgba(37, 211, 102, 0.4)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.transform = 'scale(1)';
+          e.target.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+        }}
+        title="Chat on WhatsApp"
+      >
+        <MessageCircle size={24} />
+      </a>
     </div>
   );
 };
