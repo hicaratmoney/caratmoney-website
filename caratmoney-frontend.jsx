@@ -17,7 +17,6 @@ const CaratMoney = () => {
     14: 0.585
   };
 
-  // Function to format Indian numbers with commas (1,23,456)
   const formatIndianNumber = (num) => {
     if (!num) return '0';
     const str = num.toString();
@@ -29,7 +28,6 @@ const CaratMoney = () => {
     return lastThree;
   };
 
-  // Validate mobile number (10 digits only)
   const validateMobileNumber = (number) => {
     const phoneRegex = /^[0-9]{10}$/;
     return phoneRegex.test(number);
@@ -69,12 +67,159 @@ const CaratMoney = () => {
       getExactQuote: 'Get Exact Quote →',
       enterMobile: 'Enter 10 digit mobile number'
     },
+    bn: {
+      header: 'গহনা থেকে অর্থ। মিনিটে!',
+      subheader: 'ভারতের সেরা হারে আপনার সোনা বিক্রয় করুন — ওজন করা, পরীক্ষা করা এবং ২০ মিনিটের মধ্যে অর্থ প্রদান করা।',
+      goldPurchased: 'সোনা ক্রয় করা',
+      happyCustomers: 'সন্তুষ্ট গ্রাহক',
+      avgRating: 'গড় রেটিং',
+      weight: 'ওজন (গ্রামে)',
+      goldPurity: 'সোনার বিশুদ্ধতা (ক্যারেট)',
+      mobileNumber: 'মোবাইল নম্বর',
+      carat24: '24 ক্যারেট — 99.9% খাঁটি',
+      carat22: '22 ক্যারেট — 91.6% খাঁটি',
+      carat18: '18 ক্যারেট — 75% খাঁটি',
+      carat14: '14 ক্যারেট — 58.5% খাঁটি',
+      estimatedValue: 'অনুমানিত মূল্য',
+      youReceive: 'আপনি পাবেন',
+      today: 'আজকের ক্যারেট মানি রেট',
+      calcTitle: 'সোনার মূল্য আনুমানিক',
+      calcSubtitle: 'এখনই আপনার সোনার মূল্য জানুন।',
+      serviceFeeDeduction: 'সেবা ফি ছাড় (3%)',
+      getExactQuote: 'সঠিক উদ্ধৃতি পান →',
+      enterMobile: '10 অঙ্কের মোবাইল নম্বর দিন'
+    },
     hi: {
-      header: 'गहना से पैसा। मिनटों में!',
+      header: 'गहने से पैसा। मिनटों में!',
+      subheader: 'भारत की सर्वश्रेष्ठ दरों पर अपना सोना बेचें — तौला जाता है, परीक्षण किया जाता है, और 20 मिनट के अंदर पैसा दिया जाता है।',
+      goldPurchased: 'सोना खरीदा गया',
+      happyCustomers: 'खुश ग्राहक',
+      avgRating: 'औसत रेटिंग',
       weight: 'वजन (ग्राम में)',
-      youReceive: 'आप पाएंगे',
+      goldPurity: 'सोने की शुद्धता (कैरेट)',
       mobileNumber: 'मोबाइल नंबर',
+      carat24: '24 कैरेट — 99.9% शुद्ध',
+      carat22: '22 कैरेट — 91.6% शुद्ध',
+      carat18: '18 कैरेट — 75% शुद्ध',
+      carat14: '14 कैरेट — 58.5% शुद्ध',
+      estimatedValue: 'अनुमानित मूल्य',
+      youReceive: 'आप पाएंगे',
+      today: 'आज का कैरेट मनी दर',
+      calcTitle: 'सोने की कीमत अनुमानक',
+      calcSubtitle: 'अभी अपने सोने की कीमत जानें।',
+      serviceFeeDeduction: 'सेवा शुल्क कटौती (3%)',
+      getExactQuote: 'सटीक उद्धरण प्राप्त करें →',
       enterMobile: '10 अंकों का मोबाइल नंबर दर्ज करें'
+    },
+    kn: {
+      header: 'ಆಭರಣದಿಂದ ಹಣ. ನಿಮಿಷಗಳಲ್ಲಿ!',
+      subheader: 'ಭಾರತದ ಅತ್ಯುತ್ತಮ ದರದಲ್ಲಿ ನಿಮ್ಮ ಚಿನ್ನ ಮಾರಿ — ತೂಕ ಹಾಕಲಾಯಿತು, ಪರೀಕ್ಷೆ ಮಾಡಿದೆ ಮತ್ತು 20 ನಿಮಿಷದೊಳಗೆ ಹಣ ನೀಡಲಾಯಿತು।',
+      goldPurchased: 'ಚಿನ್ನ ಖರೀದಿ',
+      happyCustomers: 'ಸಂತುಷ್ಟ ಗ್ರಾಹಕರು',
+      avgRating: 'ಸರಾಸರಿ ರೇಟಿಂಗ್',
+      weight: 'ತೂಕ (ಗ್ರಾಮ್‌ನಲ್ಲಿ)',
+      goldPurity: 'ಚಿನ್ನದ ಶುದ್ಧತೆ (ಕ್ಯಾರೆಟ್)',
+      mobileNumber: 'ಮೊಬೈಲ್ ಸಂಖ್ಯೆ',
+      carat24: '24 ಕ್ಯಾರೆಟ್ — 99.9% ಶುದ್ಧ',
+      carat22: '22 ಕ್ಯಾರೆಟ್ — 91.6% ಶುದ್ಧ',
+      carat18: '18 ಕ್ಯಾರೆಟ್ — 75% ಶುದ್ಧ',
+      carat14: '14 ಕ್ಯಾರೆಟ್ — 58.5% ಶುದ್ಧ',
+      estimatedValue: 'ಅನುಮಾನಿತ ಮೌಲ್ಯ',
+      youReceive: 'ನೀವು ಪಡೆಯುವಿರಿ',
+      today: 'ಇಂದಿನ ಕ್ಯಾರೆಟ್ ಮನಿ ದರ',
+      calcTitle: 'ಚಿನ್ನದ ಮೂಲ್ಯ ಅನುಮಾನಕ',
+      calcSubtitle: 'ಈಗಲೇ ನಿಮ್ಮ ಚಿನ್ನದ ಮೌಲ್ಯ ಪರಿಶೀಲಿಸಿ।',
+      serviceFeeDeduction: 'ಸೇವಾ ಶುಲ್ಕ ಕಾಟ (3%)',
+      getExactQuote: 'ನಿಖರ ಉದ್ಧರಣ ಪಡೆಯಿರಿ →',
+      enterMobile: '10 ಅಂಕಿ ಮೊಬೈಲ್ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ'
+    },
+    ml: {
+      header: 'നിലവിൽ നിന്ന് പണത്തിലേക്ക്. മിനിറ്റുകളിൽ!',
+      subheader: 'ഇന്ത്യയുടെ മികച്ച നിരക്കിൽ നിങ്ങളുടെ സ്വർണ്ണം വിറ്റുകൊടുക്കുക — തൂക്കം, പരിശോധിക്കപ്പെടുന്നു, 20 മിനിറ്റിനുള്ളിൽ പണം നൽകപ്പെടുന്നു.',
+      goldPurchased: 'സ്വർണ്ണം വാങ്ങിയത്',
+      happyCustomers: 'സന്തുഷ്ട ഗ്രാഹകർ',
+      avgRating: 'ശരാശരി റേറ്റിംഗ്',
+      weight: 'ഭാരം (ഗ്രാമിൽ)',
+      goldPurity: 'സ്വർണ്ണ ശുദ്ധത (കാരറ്റ്)',
+      mobileNumber: 'മൊബൈൽ നമ്പർ',
+      carat24: '24 കാരറ്റ് — 99.9% ശുദ്ധ',
+      carat22: '22 കാരറ്റ് — 91.6% ശുദ്ധ',
+      carat18: '18 കാരറ്റ് — 75% ശുദ്ധ',
+      carat14: '14 കാരറ്റ് — 58.5% ശുദ്ധ',
+      estimatedValue: 'കണക്കാക്കിയ മൂല്യം',
+      youReceive: 'നിങ്ങൾ പലിശ',
+      today: 'ഇന്നത്തെ കാരറ്റ് മണി നിരക്ക്',
+      calcTitle: 'സ്വർണ്ണ മൂല്യ കണക്കാണ്',
+      calcSubtitle: 'ഇപ്പോൾ നിങ്ങളുടെ സ്വർണ്ണ മൂല്യം പരിശോധിക്കുക।',
+      serviceFeeDeduction: 'സേവന ഫീസ് കുറയ്ക്കൽ (3%)',
+      getExactQuote: 'കൃത്യമായ ഉദ്ധരണം ലഭിക്കുക →',
+      enterMobile: '10 ഡിജിറ്റ് മൊബൈൽ നമ്പർ നൽകുക'
+    },
+    mr: {
+      header: 'दागिन्यांपासून पैसे. मिनिटांत!',
+      subheader: 'भारतातील सर्वोत्तम दरांवर तुमचे सोने विक्रय करा — वजन केले, चाचले आणि 20 मिनिटांत पैसे दिले.',
+      goldPurchased: 'सोने खरेदी',
+      happyCustomers: 'खुश ग्राहक',
+      avgRating: 'सरासरी रेटिंग',
+      weight: 'वजन (ग्रामांत)',
+      goldPurity: 'सोन्याची शुद्धता (कॅरेट)',
+      mobileNumber: 'मोबाइल नंबर',
+      carat24: '24 कॅरेट — 99.9% शुद्ध',
+      carat22: '22 कॅरेट — 91.6% शुद्ध',
+      carat18: '18 कॅरेट — 75% शुद्ध',
+      carat14: '14 कॅरेट — 58.5% शुद्ध',
+      estimatedValue: 'अनुमानित मूल्य',
+      youReceive: 'तुम्हाला मिळेल',
+      today: 'आजचा कॅरेट मनी दर',
+      calcTitle: 'सोन्याचे मूल्य अनुमानक',
+      calcSubtitle: 'आत्ताच तुमच्या सोन्याचे मूल्य तपासा।',
+      serviceFeeDeduction: 'सेवा शुल्क कपात (3%)',
+      getExactQuote: 'अचूक उद्धरण मिळवा →',
+      enterMobile: '10 अंकांचा मोबाइल नंबर टाका'
+    },
+    ta: {
+      header: 'நகையிலிருந்து பணம். நிமிषங்களில்!',
+      subheader: 'இந்தியாவின் சிறந்த விலையில் உங்கள் தங்கத்தை விற்கவும் — எடை, சோதனை மற்றும் 20 நிமிடங்களுக்குள் பணம் வழங்கப்படுகிறது.',
+      goldPurchased: 'தங்கம் ক্রয়',
+      happyCustomers: 'மகிழ்ந்த வாடிக்கையாளர்கள்',
+      avgRating: 'சராசரி রेটிங்',
+      weight: 'எடை (கிராமில்)',
+      goldPurity: 'தங்கத்தின் தூய்மை (கேரட்)',
+      mobileNumber: 'மொபைல் எண்',
+      carat24: '24 கேரட் — 99.9% தூய',
+      carat22: '22 கேரட் — 91.6% தூய',
+      carat18: '18 கேரட் — 75% தூய',
+      carat14: '14 கேரட் — 58.5% தூய',
+      estimatedValue: 'மதிப்பிடப்பட்ட மூல்ய',
+      youReceive: 'நீங்கள் பெறுவீர்கள்',
+      today: 'இன்றைய கேரட் மணி விகிதம்',
+      calcTitle: 'தங்கத்தின் மூல்य கணக்கீட்டி',
+      calcSubtitle: 'இப்போதே உங்கள் தங்கத்தின் மூல்யத்தை சரிபார்க்கவும்.',
+      serviceFeeDeduction: 'சேவை கட்டணம் குறைப்பு (3%)',
+      getExactQuote: 'சரியான மேற்கோள் பெறவும் →',
+      enterMobile: '10 இலக்க மொபைல் எண்ணை உள்ளிடவும்'
+    },
+    te: {
+      header: 'ఆభరణ నుండి డబ్బు. నిమిషాలలో!',
+      subheader: 'భారతదేశపు ఉత్తమ రేటుకు మీ బంగారాన్ని విక్రయించండి — బరువు, పరీక్ష చేయబడింది, 20 నిమిషాలలో డబ్బు ఇవ్వబడుతుంది.',
+      goldPurchased: 'బంగారం కొనుగోలు',
+      happyCustomers: 'సంతుష్ట గ్రాహకులు',
+      avgRating: 'సగటు రేటింగ్',
+      weight: 'బరువు (గ్రాములలో)',
+      goldPurity: 'బంగారం స్వచ్ఛత (క్యారెట్)',
+      mobileNumber: 'మోబైల్ నంబర్',
+      carat24: '24 క్యారెట్ — 99.9% శుద్ధ',
+      carat22: '22 క్యారెట్ — 91.6% శుద్ధ',
+      carat18: '18 క్యారెట్ — 75% శుద్ధ',
+      carat14: '14 క్యారెట్ — 58.5% శుద్ధ',
+      estimatedValue: 'అంచనా విలువ',
+      youReceive: 'మీకు వస్తుంది',
+      today: 'ఈ రోజు క్యారెట్ మనీ రేట్',
+      calcTitle: 'బంగారం విలువ కాలిక్యులేటర్',
+      calcSubtitle: 'ఇప్పుడే మీ బంగారం విలువను తనిఖీ చేయండి.',
+      serviceFeeDeduction: 'సేవా ఫీ తగ్గింపు (3%)',
+      getExactQuote: 'ఖచ్చితమైన కోట్ పొందండి →',
+      enterMobile: '10 అంకెల మోబైల్ నంబర్ నమోదు చేయండి'
     }
   };
 
@@ -101,7 +246,6 @@ const CaratMoney = () => {
   const rate18K = Math.round(RATE_24K * 0.750);
   const rate14K = Math.round(RATE_24K * 0.585);
 
-  // Check if form is complete and valid
   const isFormValid = weight && weight > 0 && mobileNumber && !mobileError;
 
   const grossValue = Math.round(parseFloat(weight || 0) * purities[purity] * RATE_24K);
@@ -119,7 +263,13 @@ const CaratMoney = () => {
             style={{ backgroundColor: '#111827', color: '#ffffff', padding: '0.5rem', borderRadius: '0.375rem', border: '1px solid #374151', cursor: 'pointer' }}
           >
             <option value="en">English</option>
+            <option value="bn">বাংলা</option>
             <option value="hi">हिंदी</option>
+            <option value="kn">ಕನ್ನಡ</option>
+            <option value="ml">മലയാളം</option>
+            <option value="mr">मराठी</option>
+            <option value="ta">தமிழ்</option>
+            <option value="te">తెలుగు</option>
           </select>
         </div>
 
@@ -169,7 +319,7 @@ const CaratMoney = () => {
                 id="weight"
                 value={weight}
                 onChange={(e) => setWeight(e.target.value)}
-                placeholder="Enter weight in grams"
+                placeholder={t.weight}
                 style={{ width: '100%', backgroundColor: '#1f2937', border: weight ? '1px solid #10b981' : '1px solid #374151', borderRadius: '0.375rem', padding: '0.75rem', color: '#ffffff' }}
               />
             </div>
